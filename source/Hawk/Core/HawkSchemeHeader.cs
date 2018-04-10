@@ -51,7 +51,7 @@ namespace Thinktecture.IdentityModel.Hawk.Core
                                 string body = null;
                                 if (artifacts.PayloadHash != null && artifacts.PayloadHash.Length > 0)
                                 {
-                                    body = await request.ReadBodyAsStringAsync();
+                                    body = await request.ReadBodyAsStringAsync() ?? string.Empty;
                                 }
 
                                 if (crypto.IsSignatureValid(body, request.ContentType)) // MAC and hash checks
